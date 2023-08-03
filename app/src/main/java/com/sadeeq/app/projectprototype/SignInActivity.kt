@@ -1,5 +1,6 @@
 package com.sadeeq.app.projectprototype
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -10,10 +11,19 @@ import com.sadeeq.app.projectprototype.base.BaseActivity
 import com.sadeeq.app.projectprototype.databinding.ActivitySignInBinding
 import com.sadeeq.app.projectprototype.firebase.AuthError
 import com.sadeeq.app.projectprototype.firebase.AuthState
+import com.sadeeq.app.projectprototype.firebase.activities.StudentsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SignInActivity : BaseActivity() {
+
+    override fun onStart() {
+        super.onStart()
+        if (fireBaseViewModel.getCurrentUser() != null) {
+            startActivity(Intent(this, StudentsActivity::class.java))
+        }
+    }
+
     private lateinit var binding: ActivitySignInBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
