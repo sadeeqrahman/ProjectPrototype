@@ -1,9 +1,14 @@
 package com.sadeeq.app.projectprototype.network.module
 
 
+import android.app.Application
+import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.sadeeq.app.projectprototype.app.ProjectPrototypeApplication
 import com.sadeeq.app.projectprototype.network.ApisServices
+import com.sadeeq.app.projectprototype.roomDatabase.AppDatabase
+import com.sadeeq.app.projectprototype.roomDatabase.MovieDao
 import com.sadeeq.app.projectprototype.utils.API_KEY
 import com.sadeeq.app.projectprototype.utils.BASE_URL
 import com.sadeeq.app.projectprototype.utils.NETWORK_TIMEOUT
@@ -20,6 +25,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
+
 object ApiModule {
 
     @Provides
@@ -62,7 +68,6 @@ object ApiModule {
     }
 
 
-
     @Provides
     @Singleton
     fun provideRetrofit(baseUrl: String, gson: Gson, client: OkHttpClient): ApisServices =
@@ -72,4 +77,17 @@ object ApiModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApisServices::class.java)
+
+
+    @Provides
+    @Singleton
+    fun provideAppDatabase(application: Application): AppDatabase {
+        return Room.databaseBuilder(application, AppDatabase::class.java, "moviesDatabase")
+            .build()
+    }
+
+    @Provides
+    fun provideMovieDao(database: AppDatabase): MovieDao {
+        return database.movieDao()
+    }
 }

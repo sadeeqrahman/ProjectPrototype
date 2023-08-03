@@ -1,5 +1,6 @@
 package com.sadeeq.app.projectprototype
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -58,7 +59,7 @@ class MainActivity : BaseActivity() {
             }
 
             moviesAdapter.setOnItemClickListener {
-
+                startActivity(Intent(this@MainActivity,RoomMainActivity::class.java))
             }
 
             lifecycleScope.launchWhenCreated {
