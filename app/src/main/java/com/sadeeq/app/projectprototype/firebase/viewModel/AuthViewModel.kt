@@ -5,6 +5,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.sadeeq.app.projectprototype.firebase.AuthError
 import com.sadeeq.app.projectprototype.firebase.AuthState
+import com.sadeeq.app.projectprototype.firebase.models.User
 import com.sadeeq.app.projectprototype.firebase.repo.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -32,5 +33,11 @@ class AuthViewModel @Inject constructor(
 
     fun getCurrentUser(): FirebaseUser? {
         return firebaseAuth.currentUser
+    }
+
+    fun insertUserData(user: User, onSuccess: () -> Unit, onError: (AuthError) -> Unit) {
+        authRepository.insertUserData(user, onSuccess) { databaseError ->
+            onError.invoke(databaseError)
+        }
     }
 }

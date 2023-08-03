@@ -16,7 +16,7 @@
         android:theme="@style/Theme.ProjectPrototype"
         tools:targetApi="31">
         <activity
-            android:name=".firebase.activities.StudentsActivity"
+            android:name=".firebase.activities.UsersActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
