@@ -1,6 +1,7 @@
 package com.sadeeq.app.projectprototype.roomDatabase
 
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagingData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -14,5 +15,6 @@ class MovieViewModel @Inject constructor(private val repository: MovieRepository
     suspend fun insertMovies(movies: List<MovieEntity>) {
         repository.insertMovies(movies)
     }
+
 }
 

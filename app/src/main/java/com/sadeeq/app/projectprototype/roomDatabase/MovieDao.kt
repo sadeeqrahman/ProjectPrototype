@@ -1,5 +1,6 @@
 package com.sadeeq.app.projectprototype.roomDatabase
 
+import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy

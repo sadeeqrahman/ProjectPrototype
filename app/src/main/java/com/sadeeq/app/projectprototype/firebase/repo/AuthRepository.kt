@@ -1,0 +1,67 @@
+package com.sadeeq.app.projectprototype.firebase.repo
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.sadeeq.app.projectprototype.firebase.AuthError
+import com.sadeeq.app.projectprototype.firebase.AuthState
+import dagger.hilt.android.scopes.ViewModelScoped
+import javax.inject.Inject
+class AuthRepository @Inject constructor(private val firebaseAuth: FirebaseAuth) {
+
+    private val _authStateLiveData: MutableLiveData<AuthState> = MutableLiveData()
+    val authStateLiveData: LiveData<AuthState> = _authStateLiveData
+
+    private val _authErrorLiveData: MutableLiveData<AuthError> = MutableLiveData()
+    val authErrorLiveData: LiveData<AuthError> = _authErrorLiveData
+
+    fun signInWithEmailAndPassword(email: String, password: String) {
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    _authStateLiveData.postValue(AuthState.Authenticated)
+                } else {
+                    _authStateLiveData.postValue(AuthState.NotAuthenticated)
+                    val errorMessage = task.exception?.localizedMessage ?: "An error occurred"
+                    val authError = AuthError.FirebaseError(errorMessage)
+                    _authErrorLiveData.postValue(authError)
+                }
+            }
+            .addOnFailureListener { exception ->
+                _authStateLiveData.postValue(AuthState.NotAuthenticated)
+                val errorMessage = exception.localizedMessage ?: "An error occurred"
+                val authError = AuthError.FirebaseError(errorMessage)
+                _authErrorLiveData.postValue(authError)
+            }
+    }
+
+    fun signUpWithEmailAndPassword(email: String, password: String) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    _authStateLiveData.postValue(AuthState.Authenticated)
+                } else {
+                    _authStateLiveData.postValue(AuthState.NotAuthenticated)
+                    val errorMessage = task.exception?.localizedMessage ?: "An error occurred"
+                    val authError = AuthError.FirebaseError(errorMessage)
+                    _authErrorLiveData.postValue(authError)
+                }
+            }
+            .addOnFailureListener { exception ->
+                _authStateLiveData.postValue(AuthState.NotAuthenticated)
+                val errorMessage = exception.localizedMessage ?: "An error occurred"
+                val authError = AuthError.FirebaseError(errorMessage)
+                _authErrorLiveData.postValue(authError)
+            }
+    }
+
+    fun getCurrentUser(): FirebaseUser? {
+        return firebaseAuth.currentUser
+    }
+
+    fun signOut() {
+        firebaseAuth.signOut()
+        _authStateLiveData.postValue(AuthState.NotAuthenticated)
+    }
+}
+
