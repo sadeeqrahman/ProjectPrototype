@@ -5,5 +5,5 @@ import com.sadeeq.app.projectprototype.viewModels.ApiVIewModel
 import androidx.activity.viewModels
 
 open class BaseActivity : AppCompatActivity() {
-      val viewModel: ApiVIewModel by viewModels()
+    val viewModel: ApiVIewModel by viewModels()
 }

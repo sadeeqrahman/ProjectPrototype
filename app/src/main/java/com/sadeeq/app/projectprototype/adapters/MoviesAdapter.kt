@@ -37,6 +37,7 @@ class MoviesAdapter @Inject() constructor() :
 
         @SuppressLint("SetTextI18n")
         fun bind(item: MoviesListResponse.Result) {
+            binding.movieViewMdel = item
             binding.apply {
                 tvMovieName.text = item.title
                 tvMovieDateRelease.text = item.releaseDate
