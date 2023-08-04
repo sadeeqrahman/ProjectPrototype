@@ -1,5 +1,6 @@
 package com.sadeeq.app.projectprototype.firebase.viewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -19,6 +20,9 @@ class AuthViewModel @Inject constructor(
     val authState: LiveData<AuthState> = authRepository.authStateLiveData
     val authError: LiveData<AuthError> = authRepository.authErrorLiveData
 
+    private val _usersLiveData: MutableLiveData<List<User>> = MutableLiveData()
+    val usersLiveData: LiveData<List<User>> = _usersLiveData
+
     fun signIn(email: String, password: String) {
         authRepository.signInWithEmailAndPassword(email, password)
     }
@@ -36,8 +40,24 @@ class AuthViewModel @Inject constructor(
     }
 
     fun insertUserData(user: User, onSuccess: () -> Unit, onError: (AuthError) -> Unit) {
-        authRepository.insertUserData(user, onSuccess) { databaseError ->
-            onError.invoke(databaseError)
-        }
+        authRepository.insertUserData(user,
+            onSuccess = {
+                onSuccess.invoke()
+            },
+            onError = { databaseError ->
+                onError.invoke(databaseError)
+            }
+        )
+    }
+
+    fun fetchUsers() {
+        authRepository.getUsers(
+            onSuccess = { users ->
+                _usersLiveData.postValue(users)
+            },
+            onError = { errorMessage ->
+                // Handle error
+            }
+        )
     }
 }

@@ -38,5 +38,15 @@ class UsersActivity : BaseActivity() {
                 }
             )
         }
+
+
+        fireBaseViewModel.usersLiveData.observe(this) {
+            binding.saveUser.text = ""
+            for (name in it){
+                binding.saveUser.append(name.username+"\n")
+            }
+        }
+
+        fireBaseViewModel.fetchUsers()
     }
 }

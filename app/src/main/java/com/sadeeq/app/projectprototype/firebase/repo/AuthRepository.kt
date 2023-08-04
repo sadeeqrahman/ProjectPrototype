@@ -4,8 +4,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.sadeeq.app.projectprototype.firebase.AuthError
 import com.sadeeq.app.projectprototype.firebase.AuthState
 import com.sadeeq.app.projectprototype.firebase.models.User
@@ -77,6 +80,26 @@ class AuthRepository @Inject constructor(private val firebaseAuth: FirebaseAuth)
                 val authError = AuthError.DatabaseError(errorMessage)
                 onError.invoke(authError)
             }
+    }
+
+    fun getUsers(onSuccess: (List<User>) -> Unit, onError: (String) -> Unit) {
+        val usersRef = databaseReference.child("users")
+        val usersListener = object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val users = mutableListOf<User>()
+                for (userSnapshot in snapshot.children) {
+                    val user = userSnapshot.getValue(User::class.java)
+                    user?.let { users.add(it) }
+                }
+                onSuccess.invoke(users)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                onError.invoke(error.message)
+            }
+        }
+        usersRef.addValueEventListener(usersListener)
+
     }
 }
 
