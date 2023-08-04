@@ -1,7 +1,7 @@
 package com.sadeeq.app.projectprototype.firebase.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import androidx.databinding.DataBindingUtil
 import com.sadeeq.app.projectprototype.R
 import com.sadeeq.app.projectprototype.base.BaseActivity
@@ -9,7 +9,6 @@ import com.sadeeq.app.projectprototype.databinding.ActivityUsersBinding
 import com.sadeeq.app.projectprototype.firebase.AuthError
 import com.sadeeq.app.projectprototype.firebase.models.User
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.random.Random
 
 @AndroidEntryPoint
 class UsersActivity : BaseActivity() {
@@ -48,5 +47,20 @@ class UsersActivity : BaseActivity() {
         }
 
         fireBaseViewModel.fetchUsers()
+
+        binding.loadingButton.setOnClickListener {
+            binding.loadingButton.showLoading(true)
+        }
+
+        Handler().postDelayed({
+            updateProgress()
+        }, 1000)
+
     }
+
+    private fun updateProgress() {
+        binding.circularProgressBar.setProgress(75f)
+    }
+
+
 }
