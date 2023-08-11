@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ProjectPrototype</string>
+    <string name="signin">سائن ان</string>
+    <string name="signup">سائن اپ</string>
+    <string name="email">ای میل اڈریس</string>
+    <string name="password">پاس ورڈ</string>
+    <string name="urdu">اردو</string>
+    <string name="english">انگریزی</string>
+</resources>

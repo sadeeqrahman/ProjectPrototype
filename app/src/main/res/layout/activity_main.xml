@@ -12,6 +12,19 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/edittextbackground"
+            android:text="@string/signin"
+            android:textColor="?android:textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rlMovies"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rlMovies"
             android:layout_width="match_parent"
@@ -19,7 +32,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/signIn" />
 
         <ProgressBar
             android:id="@+id/prgBarMovies"

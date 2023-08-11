@@ -1,6 +1,9 @@
 package com.sadeeq.app.projectprototype
 
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
 import android.transition.Fade
 import android.transition.TransitionManager
@@ -11,7 +14,9 @@ import com.sadeeq.app.projectprototype.base.BaseActivity
 import com.sadeeq.app.projectprototype.databinding.ActivitySignInBinding
 import com.sadeeq.app.projectprototype.firebase.AuthError
 import com.sadeeq.app.projectprototype.firebase.activities.UsersActivity
+import com.sadeeq.app.projectprototype.utils.LanguageUtils
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.Locale
 
 @AndroidEntryPoint
 class SignInActivity : BaseActivity() {
@@ -29,18 +34,17 @@ class SignInActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
 
         binding.signIn.setOnClickListener {
-            switchTheme()
-//            val email = binding.emailAddress.text.toString()
-//            val password = binding.password.text.toString()
-//
-//            if (binding.emailAddress.text.toString().isEmpty() || binding.password.text.toString()
-//                    .isEmpty()
-//            ) {
-//                showTost("enter your credentials")
-//            } else {
-//                binding.progressBar.visibility = View.VISIBLE
-//                fireBaseViewModel.signIn(email, password)
-//            }
+            val email = binding.emailAddress.text.toString()
+            val password = binding.password.text.toString()
+
+            if (binding.emailAddress.text.toString().isEmpty() || binding.password.text.toString()
+                    .isEmpty()
+            ) {
+                showTost("enter your credentials")
+            } else {
+                binding.progressBar.visibility = View.VISIBLE
+                fireBaseViewModel.signIn(email, password)
+            }
         }
 
         fireBaseViewModel.authError.observe(this) { authError ->
@@ -63,34 +67,30 @@ class SignInActivity : BaseActivity() {
         }
 
         binding.signUp.setOnClickListener {
-            switchTheme1()
-//            val email = binding.emailAddress.text.toString()
-//            val password = binding.password.text.toString()
-//            if (binding.emailAddress.text.toString().isEmpty() || binding.password.text.toString()
-//                    .isEmpty()
-//            ) {
-//                showTost("enter your credentials")
-//            } else {
-//                binding.progressBar.visibility = View.VISIBLE
-//                fireBaseViewModel.signUp(email, password)
-//            }
+            val email = binding.emailAddress.text.toString()
+            val password = binding.password.text.toString()
+            if (binding.emailAddress.text.toString().isEmpty() || binding.password.text.toString()
+                    .isEmpty()
+            ) {
+                showTost("enter your credentials")
+            } else {
+                binding.progressBar.visibility = View.VISIBLE
+                fireBaseViewModel.signUp(email, password)
+            }
+
+        }
+
+        binding.english.setOnClickListener {
+            LanguageUtils.changeLanguage(this, "en")
+            restartActivity(this)
+
+        }
+  binding.urdu.setOnClickListener {
+            LanguageUtils.changeLanguage(this, "ur")
+            restartActivity(this)
 
         }
 
     }
-
-    private fun switchTheme() {
-        val newTheme = AppCompatDelegate.MODE_NIGHT_NO
-        val transition = Fade()
-        TransitionManager.beginDelayedTransition(findViewById(android.R.id.content), transition)
-        AppCompatDelegate.setDefaultNightMode(newTheme)
-    }
-  private fun switchTheme1() {
-        val newTheme = AppCompatDelegate.MODE_NIGHT_YES
-        val transition = Fade()
-        TransitionManager.beginDelayedTransition(findViewById(android.R.id.content), transition)
-        AppCompatDelegate.setDefaultNightMode(newTheme)
-    }
-
 
 }
