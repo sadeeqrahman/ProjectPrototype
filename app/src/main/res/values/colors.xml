@@ -13,6 +13,10 @@
     <color name="iconColor">#2B4865</color>
     <color name="colorPrimary">#6200EA</color>
     <color name="colorAccent">#6200EA</color>
+
+    <color name="edittext_bg_color">#67051C</color>
+    <color name="edittext_bg_color_dark">#2A2C36</color>
+
     <color name="colorPrimaryDark">#67051C</color>
 
 </resources>

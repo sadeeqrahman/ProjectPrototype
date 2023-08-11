@@ -2,7 +2,10 @@ package com.sadeeq.app.projectprototype
 
 import android.content.Intent
 import android.os.Bundle
+import android.transition.Fade
+import android.transition.TransitionManager
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import com.sadeeq.app.projectprototype.base.BaseActivity
 import com.sadeeq.app.projectprototype.databinding.ActivitySignInBinding
@@ -26,17 +29,18 @@ class SignInActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
 
         binding.signIn.setOnClickListener {
-            val email = binding.emailAddress.text.toString()
-            val password = binding.password.text.toString()
-
-            if (binding.emailAddress.text.toString().isEmpty() || binding.password.text.toString()
-                    .isEmpty()
-            ) {
-                showTost("enter your credentials")
-            } else {
-                binding.progressBar.visibility = View.VISIBLE
-                fireBaseViewModel.signIn(email, password)
-            }
+            switchTheme()
+//            val email = binding.emailAddress.text.toString()
+//            val password = binding.password.text.toString()
+//
+//            if (binding.emailAddress.text.toString().isEmpty() || binding.password.text.toString()
+//                    .isEmpty()
+//            ) {
+//                showTost("enter your credentials")
+//            } else {
+//                binding.progressBar.visibility = View.VISIBLE
+//                fireBaseViewModel.signIn(email, password)
+//            }
         }
 
         fireBaseViewModel.authError.observe(this) { authError ->
@@ -73,4 +77,13 @@ class SignInActivity : BaseActivity() {
         }
 
     }
+
+    private fun switchTheme() {
+        val newTheme = AppCompatDelegate.MODE_NIGHT_NO
+        val transition = Fade()
+        TransitionManager.beginDelayedTransition(findViewById(android.R.id.content), transition)
+        AppCompatDelegate.setDefaultNightMode(newTheme)
+    }
+
+
 }
