@@ -63,16 +63,17 @@ class SignInActivity : BaseActivity() {
         }
 
         binding.signUp.setOnClickListener {
-            val email = binding.emailAddress.text.toString()
-            val password = binding.password.text.toString()
-            if (binding.emailAddress.text.toString().isEmpty() || binding.password.text.toString()
-                    .isEmpty()
-            ) {
-                showTost("enter your credentials")
-            } else {
-                binding.progressBar.visibility = View.VISIBLE
-                fireBaseViewModel.signUp(email, password)
-            }
+            switchTheme1()
+//            val email = binding.emailAddress.text.toString()
+//            val password = binding.password.text.toString()
+//            if (binding.emailAddress.text.toString().isEmpty() || binding.password.text.toString()
+//                    .isEmpty()
+//            ) {
+//                showTost("enter your credentials")
+//            } else {
+//                binding.progressBar.visibility = View.VISIBLE
+//                fireBaseViewModel.signUp(email, password)
+//            }
 
         }
 
@@ -80,6 +81,12 @@ class SignInActivity : BaseActivity() {
 
     private fun switchTheme() {
         val newTheme = AppCompatDelegate.MODE_NIGHT_NO
+        val transition = Fade()
+        TransitionManager.beginDelayedTransition(findViewById(android.R.id.content), transition)
+        AppCompatDelegate.setDefaultNightMode(newTheme)
+    }
+  private fun switchTheme1() {
+        val newTheme = AppCompatDelegate.MODE_NIGHT_YES
         val transition = Fade()
         TransitionManager.beginDelayedTransition(findViewById(android.R.id.content), transition)
         AppCompatDelegate.setDefaultNightMode(newTheme)
