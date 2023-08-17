@@ -13,6 +13,7 @@ import com.sadeeq.app.projectprototype.adapters.LoadMoreAdapter
 import com.sadeeq.app.projectprototype.adapters.MoviesAdapter
 import com.sadeeq.app.projectprototype.base.BaseActivity
 import com.sadeeq.app.projectprototype.databinding.ActivityMainBinding
+import com.sadeeq.app.projectprototype.utils.permissions.PermissionManager
 import com.sadeeq.app.projectprototype.viewModels.ApiVIewModel
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.HttpException
@@ -59,7 +60,7 @@ class MainActivity : BaseActivity() {
             }
 
             moviesAdapter.setOnItemClickListener {
-                startActivity(Intent(this@MainActivity,RoomMainActivity::class.java))
+                startActivity(Intent(this@MainActivity, RoomMainActivity::class.java))
             }
 
             lifecycleScope.launchWhenCreated {
@@ -83,5 +84,8 @@ class MainActivity : BaseActivity() {
             )
 
         }
+
+
     }
+
 }
