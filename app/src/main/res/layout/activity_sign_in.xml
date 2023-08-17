@@ -6,126 +6,138 @@
     <data>
 
     </data>
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".SignInActivity">
+        android:fillViewport="true">
 
-
-<Space
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"/>
-
-        <EditText
-             android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:id="@+id/emailAddress"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email" />
-
-        <EditText
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="@string/password" />
-
-        <ProgressBar
-            android:visibility="gone"
-            android:layout_gravity="center"
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            />
-        <TextView
-            android:layout_marginTop="20dp"
-            android:id="@+id/timerTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="24sp"
-            android:textColor="@android:color/white"
-            android:text="00:00"
-            android:scaleType="center" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/edittextbackground"
-            android:id="@+id/signIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:textColor="?android:textColor"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/signin" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/signUp"
-            android:textColor="?android:textColor"
-            android:background="@drawable/edittextbackground"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/signup" />
-
-   <androidx.appcompat.widget.AppCompatButton
-            android:background="@drawable/edittextbackground"
-            android:id="@+id/urdu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:textColor="?android:textColor"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/urdu" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/english"
-            android:textColor="?android:textColor"
-            android:background="@drawable/edittextbackground"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="20dp"
-            android:text="@string/english" />
-
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".SignInActivity">
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="250dp"
-            android:elevation="5dp"
-            app:cardBackgroundColor="?myCardbgColor"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            app:cardCornerRadius="10dp">
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-        </com.google.android.material.card.MaterialCardView>
+            <EditText
+                android:id="@+id/emailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/notificationBell"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:tint="@color/white"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:src="@drawable/ic_notification_bell" />
+
+
+            <TextView
+                android:id="@+id/timerTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:scaleType="center"
+                android:text="00:00"
+                android:textColor="@android:color/white"
+                android:textSize="24sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:background="@drawable/edittextbackground"
+                android:text="@string/signin"
+                android:textColor="?android:textColor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/signUp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/edittextbackground"
+                android:text="@string/signup"
+                android:textColor="?android:textColor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/urdu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/edittextbackground"
+                android:text="@string/urdu"
+                android:textColor="?android:textColor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/english"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/edittextbackground"
+                android:text="@string/english"
+                android:textColor="?android:textColor" />
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:elevation="5dp"
+                app:cardBackgroundColor="?myCardbgColor"
+                app:cardCornerRadius="10dp">
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

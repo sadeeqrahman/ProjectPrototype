@@ -100,8 +100,9 @@ class SignInActivity : BaseActivity() {
             }
         }
 
-        startTimer(10,binding.timerTextView)
+        startTimer(10, binding.timerTextView)
 
+        animateNotificationBell(binding.notificationBell)
     }
 
     override fun onRequestPermissionsResult(

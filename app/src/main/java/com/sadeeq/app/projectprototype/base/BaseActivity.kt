@@ -11,6 +11,7 @@ import android.transition.TransitionManager
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -88,5 +89,18 @@ open class BaseActivity : AppCompatActivity() {
         timer.start()
     }
 
+      fun animateNotificationBell(notificationBell: ImageView) {
+        val rotateAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate_animation)
+        rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation) {}
+
+            override fun onAnimationEnd(animation: Animation) {
+                // Perform any action after animation is complete
+            }
+
+            override fun onAnimationRepeat(animation: Animation) {}
+        })
+        notificationBell.startAnimation(rotateAnimation)
+    }
 
 }
