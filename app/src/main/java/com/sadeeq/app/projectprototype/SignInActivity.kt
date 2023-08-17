@@ -34,7 +34,7 @@ class SignInActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
-
+        startActivity(Intent(this,SignatureViewActivity::class.java))
         binding.signIn.setOnClickListener {
             val email = binding.emailAddress.text.toString()
             val password = binding.password.text.toString()
