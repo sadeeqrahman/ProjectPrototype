@@ -11,6 +11,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.databinding.DataBindingUtil
 import com.sadeeq.app.projectprototype.R
@@ -18,7 +19,7 @@ import com.sadeeq.app.projectprototype.databinding.ActivityDrageImageInBinding
 
 class DrageImageInActivity : AppCompatActivity() {
     private lateinit var _binding: ActivityDrageImageInBinding
-    private lateinit var imageView: ImageView
+
     private var offsetX: Float = 0.toFloat()
     private var offsetY: Float = 0.toFloat()
 
@@ -27,9 +28,23 @@ class DrageImageInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_drage_image_in)
 
-        imageView = findViewById(R.id.imageView)
 
-        imageView = findViewById(R.id.imageView)
+        val imageView = ImageView(this)
+
+
+        imageView.setImageResource(R.drawable.ic_baseline_autorenew_24)
+
+
+        val layoutParams = ViewGroup.LayoutParams(
+            ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+        imageView.layoutParams = layoutParams
+
+
+        val rootView = findViewById<LinearLayout>(R.id.rootView) // Replace with your root view ID
+        rootView.addView(imageView)
+
 
         imageView.setOnTouchListener { view, motionEvent ->
             when (motionEvent.action) {

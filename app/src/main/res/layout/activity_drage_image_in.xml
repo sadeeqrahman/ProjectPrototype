@@ -5,16 +5,11 @@
 
     </data>
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/rootView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:contentDescription="Draggable Image"
-            android:src="@drawable/ic_baseline_autorenew_24" />
-    </RelativeLayout>
+
+         </LinearLayout>
 </layout>
