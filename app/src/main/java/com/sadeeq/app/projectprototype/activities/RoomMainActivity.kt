@@ -1,9 +1,9 @@
-package com.sadeeq.app.projectprototype
+package com.sadeeq.app.projectprototype.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
+import com.sadeeq.app.projectprototype.R
 import com.sadeeq.app.projectprototype.base.BaseActivity
 import com.sadeeq.app.projectprototype.roomDatabase.MovieEntity
 import dagger.hilt.android.AndroidEntryPoint

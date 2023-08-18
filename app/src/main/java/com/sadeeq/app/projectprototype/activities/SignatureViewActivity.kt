@@ -1,9 +1,9 @@
-package com.sadeeq.app.projectprototype
+package com.sadeeq.app.projectprototype.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import com.sadeeq.app.projectprototype.databinding.ActivitySignInBinding
+import com.sadeeq.app.projectprototype.R
 import com.sadeeq.app.projectprototype.databinding.ActivitySignatureViewBinding
 
 class SignatureViewActivity : AppCompatActivity() {

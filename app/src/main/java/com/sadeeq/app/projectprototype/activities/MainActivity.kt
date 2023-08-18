@@ -1,7 +1,6 @@
-package com.sadeeq.app.projectprototype
+package com.sadeeq.app.projectprototype.activities
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -9,12 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.sadeeq.app.projectprototype.R
 import com.sadeeq.app.projectprototype.adapters.LoadMoreAdapter
 import com.sadeeq.app.projectprototype.adapters.MoviesAdapter
 import com.sadeeq.app.projectprototype.base.BaseActivity
 import com.sadeeq.app.projectprototype.databinding.ActivityMainBinding
-import com.sadeeq.app.projectprototype.utils.permissions.PermissionManager
-import com.sadeeq.app.projectprototype.viewModels.ApiVIewModel
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.HttpException
 import javax.inject.Inject
