@@ -8,15 +8,20 @@ import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
+import android.widget.Toast
 import com.sadeeq.app.projectprototype.R
+import com.sadeeq.app.projectprototype.base.BaseActivity
+import org.jsoup.Connection.Base
 
-class AddtoCartAnimationActivity : AppCompatActivity() {
+class AddtoCartAnimationActivity : BaseActivity() {
     private lateinit var productImageView: ImageView
     private lateinit var cartImageView: ImageView
     private lateinit var scaleAnimation: Animation
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_addto_cart_animation)
+
+        Toast.makeText(this,checkAppVersion(),Toast.LENGTH_LONG).show()
 
         productImageView = findViewById(R.id.productImageView)
         cartImageView = findViewById(R.id.cartImageView)

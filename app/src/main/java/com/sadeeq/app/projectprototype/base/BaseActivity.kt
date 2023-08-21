@@ -22,7 +22,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.sadeeq.app.projectprototype.R
 import com.sadeeq.app.projectprototype.firebase.viewModel.AuthViewModel
 import com.sadeeq.app.projectprototype.roomDatabase.MovieViewModel
+import com.sadeeq.app.projectprototype.utils.appVersion.AppVersionChecker
 import com.sadeeq.app.projectprototype.viewModels.PermissionsViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.Locale
 
 open class BaseActivity : AppCompatActivity() {
@@ -67,16 +72,18 @@ open class BaseActivity : AppCompatActivity() {
         AppCompatDelegate.setDefaultNightMode(newTheme)
     }
 
-      fun startTimer(durationSeconds: Long,timerTextView:TextView) {
+    fun startTimer(durationSeconds: Long, timerTextView: TextView) {
         isTimerRunning = true
         timer = object : CountDownTimer(durationSeconds * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val secondsRemaining = millisUntilFinished / 1000
-                val formattedTime = String.format("%02d:%02d", secondsRemaining / 60, secondsRemaining % 60)
+                val formattedTime =
+                    String.format("%02d:%02d", secondsRemaining / 60, secondsRemaining % 60)
                 timerTextView.text = formattedTime
 
                 // Apply scaling animation
-                val scaleAnimation = AnimationUtils.loadAnimation(applicationContext, R.anim.scale_animation)
+                val scaleAnimation =
+                    AnimationUtils.loadAnimation(applicationContext, R.anim.scale_animation)
                 timerTextView.startAnimation(scaleAnimation)
             }
 
@@ -89,7 +96,7 @@ open class BaseActivity : AppCompatActivity() {
         timer.start()
     }
 
-      fun animateNotificationBell(notificationBell: ImageView) {
+    fun animateNotificationBell(notificationBell: ImageView) {
         val rotateAnimation: Animation = AnimationUtils.loadAnimation(this, R.anim.rotate_animation)
         rotateAnimation.setAnimationListener(object : Animation.AnimationListener {
             override fun onAnimationStart(animation: Animation) {}
@@ -101,6 +108,34 @@ open class BaseActivity : AppCompatActivity() {
             override fun onAnimationRepeat(animation: Animation) {}
         })
         notificationBell.startAnimation(rotateAnimation)
+    }
+
+    fun checkAppVersion(): String {
+        var versionStatus: String = ""
+        val packageManager = applicationContext.packageManager
+
+        val appVersionChecker = AppVersionChecker()
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val installedVersion = appVersionChecker.getInstalledAppVersion(packageManager)
+            val playStoreVersion = appVersionChecker.getPlayStoreAppVersion()
+
+            if (installedVersion != null && playStoreVersion != null) {
+                if (installedVersion == playStoreVersion) {
+                    println("Both versions are the same: $installedVersion")
+                    versionStatus= "No Need to update"
+                } else {
+                    println("Installed version: $installedVersion")
+                    println("Play Store version: $playStoreVersion")
+                    versionStatus= "Update your app"
+                }
+            } else {
+                println("Failed to retrieve version information")
+                versionStatus= "Failed to retrieve version information."
+            }
+        }
+        return versionStatus
+
     }
 
 }
