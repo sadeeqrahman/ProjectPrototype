@@ -4,18 +4,23 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.sadeeq.app.projectprototype.R
+import com.sadeeq.app.projectprototype.activities.adapters.CustomCalendarView
 import com.sadeeq.app.projectprototype.models.DateInfo
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
 
 class CalenderActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calender)
 
         generateDatesAndDays(2023)
         Log.e("CALENDARvIEW", generateDatesAndDays(2023).toString())
+
+        val customCalendarView: CustomCalendarView = findViewById(R.id.customCalendarView)
+
     }
     private fun generateDatesAndDays(year: Int): ArrayList<DateInfo> {
         val dateInfoList = ArrayList<DateInfo>()

@@ -22,13 +22,13 @@ android {
     }
     signingConfigs {
         debug {
-            storeFile file('C:\\Users\\sadeeq\\StudioProjects\\ProjectPrototype\\app\\Keystore\\ProjectPrototype_Keystore.jks')
+            storeFile file('D:\\Android Studio Projects\\ProjectPrototype\\app\\Keystore\\ProjectPrototype_Keystore.jks')
             storePassword 'sadeeq123'
             keyAlias = 'sadeeq'
             keyPassword 'sadeeq123'
         }
         release {
-            storeFile file('C:\\Users\\sadeeq\\StudioProjects\\ProjectPrototype\\app\\Keystore\\ProjectPrototype_Keystore.jks')
+            storeFile file('D:\\Android Studio Projects\\ProjectPrototype\\app\\Keystore\\ProjectPrototype_Keystore.jks')
             storePassword 'sadeeq123'
             keyAlias = 'sadeeq'
             keyPassword 'sadeeq123'
