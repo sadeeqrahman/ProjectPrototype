@@ -21,6 +21,14 @@
         android:theme="@style/Theme.ProjectPrototype"
         tools:targetApi="31">
         <activity
+            android:name=".activities.CalenderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AlertAnimationActivity"
+            android:exported="false"
+            android:label="@string/title_activity_alert_animation"
+            android:theme="@style/Theme.ProjectPrototype" />
+        <activity
             android:name=".activities.AddtoCartAnimationActivity"
             android:exported="false" />
         <activity
