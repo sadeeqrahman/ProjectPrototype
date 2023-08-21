@@ -5,12 +5,11 @@ import android.app.Application
 import androidx.room.Room
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.sadeeq.app.projectprototype.BuildConfig
 import com.sadeeq.app.projectprototype.app.ProjectPrototypeApplication
 import com.sadeeq.app.projectprototype.network.ApisServices
 import com.sadeeq.app.projectprototype.roomDatabase.AppDatabase
 import com.sadeeq.app.projectprototype.roomDatabase.MovieDao
-import com.sadeeq.app.projectprototype.utils.API_KEY
-import com.sadeeq.app.projectprototype.utils.BASE_URL
 import com.sadeeq.app.projectprototype.utils.NETWORK_TIMEOUT
 import dagger.Module
 import dagger.Provides
@@ -30,7 +29,7 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideBaseUrl() = BASE_URL
+    fun provideBaseUrl() = BuildConfig.BASE_URL
 
     @Provides
     @Singleton
@@ -51,7 +50,7 @@ object ApiModule {
             val url = chain.request()
                 .url
                 .newBuilder()
-                .addQueryParameter("api_key", API_KEY)
+                .addQueryParameter("api_key", BuildConfig.API_KEY)
                 .build()
 
             val request = chain.request()

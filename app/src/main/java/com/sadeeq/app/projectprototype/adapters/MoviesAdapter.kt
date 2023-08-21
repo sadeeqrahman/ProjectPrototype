@@ -9,10 +9,10 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.sadeeq.app.projectprototype.BuildConfig
 import com.sadeeq.app.projectprototype.R
 import com.sadeeq.app.projectprototype.databinding.ItemMoviesBinding
 import com.sadeeq.app.projectprototype.models.MoviesListResponse
-import com.sadeeq.app.projectprototype.utils.POSTER_BASE_URL
 import javax.inject.Inject
 
 class MoviesAdapter @Inject() constructor() :
@@ -42,7 +42,7 @@ class MoviesAdapter @Inject() constructor() :
                 tvMovieName.text = item.title
                 tvMovieDateRelease.text = item.releaseDate
                 tvRate.text = item.voteAverage.toString()
-                val moviePosterURL = POSTER_BASE_URL + item?.posterPath
+                val moviePosterURL = BuildConfig.POSTER_BASE_URL + item?.posterPath
                 imgMovie.load(moviePosterURL){
                     crossfade(true)
                     placeholder(R.drawable.poster_placeholder)

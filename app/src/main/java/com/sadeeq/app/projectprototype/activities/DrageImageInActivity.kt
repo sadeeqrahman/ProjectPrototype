@@ -34,17 +34,15 @@ class DrageImageInActivity : AppCompatActivity() {
 
         imageView.setImageResource(R.drawable.ic_baseline_autorenew_24)
 
-
         val layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
+            250,
+            250
         )
         imageView.layoutParams = layoutParams
 
 
         val rootView = findViewById<LinearLayout>(R.id.rootView) // Replace with your root view ID
         rootView.addView(imageView)
-
 
         imageView.setOnTouchListener { view, motionEvent ->
             when (motionEvent.action) {
