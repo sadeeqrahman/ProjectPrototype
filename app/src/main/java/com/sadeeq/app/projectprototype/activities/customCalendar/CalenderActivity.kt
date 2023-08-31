@@ -1,10 +1,10 @@
-package com.sadeeq.app.projectprototype.activities
+package com.sadeeq.app.projectprototype.activities.customCalendar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.sadeeq.app.projectprototype.R
-import com.sadeeq.app.projectprototype.activities.adapters.CustomCalendarView
+import com.sadeeq.app.projectprototype.activities.customCalendar.adapters.CustomCalendarView
 import com.sadeeq.app.projectprototype.models.DateInfo
 import java.text.SimpleDateFormat
 import java.util.Calendar

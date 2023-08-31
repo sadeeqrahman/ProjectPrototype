@@ -12,7 +12,7 @@
         <attr name="max" format="float" />
     </declare-styleable>
 
-         <attr name="myCardbgColor" format="color"/>
+    <attr name="myCardbgColor" format="color" />
 
 
-  </resources>
+</resources>

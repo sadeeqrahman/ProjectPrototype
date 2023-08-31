@@ -1,4 +1,4 @@
-package com.sadeeq.app.projectprototype.activities.adapters
+package com.sadeeq.app.projectprototype.activities.customCalendar.adapters
 
 import android.content.Context
 import android.view.LayoutInflater

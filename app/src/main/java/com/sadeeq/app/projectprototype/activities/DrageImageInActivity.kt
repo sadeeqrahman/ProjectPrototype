@@ -28,9 +28,7 @@ class DrageImageInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = DataBindingUtil.setContentView(this, R.layout.activity_drage_image_in)
 
-
         val imageView = ImageView(this)
-
 
         imageView.setImageResource(R.drawable.ic_baseline_autorenew_24)
 
