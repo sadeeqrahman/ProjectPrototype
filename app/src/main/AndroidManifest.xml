@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <uses-feature
@@ -11,8 +12,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.NFC" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".app.ProjectPrototypeApplication"
@@ -25,6 +26,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectPrototype"
         tools:targetApi="31">
+        <activity
+            android:name=".activities.dowanloadFile.NotificationsActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.SharedImageActivity"
             android:exported="false" />
@@ -71,8 +75,9 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
+
                 <category android:name="android.intent.category.DEFAULT" />
-<!--                <data android:mimeType="image/*" />-->
+                <!-- <data android:mimeType="image/*" /> -->
                 <data android:mimeType="*/*" />
             </intent-filter>
         </activity>

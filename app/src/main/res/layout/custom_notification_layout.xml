@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- Add your custom notification content here -->
+    <ImageView
+        android:id="@+id/custom_notification_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_background" />
+
+    <!-- TextView elements to display title and text -->
+    <TextView
+        android:textAlignment="center"
+        style="@style/TextAppearance.Compat.Notification.Title"
+        android:textColor="@color/black"
+        android:text="@string/password"
+        android:id="@+id/custom_notification_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceMedium" />
+    <TextView
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="@string/password"
+        android:id="@+id/notification_title"
+        style="@style/TextAppearance.Compat.Notification.Title" />
+    <TextView
+        style="@style/TextAppearance.Compat.Notification.Title"
+        android:textColor="@color/black"
+        android:text="@string/password"
+        android:id="@+id/custom_notification_text"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceSmall" />
+</LinearLayout>
