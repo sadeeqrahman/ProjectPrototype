@@ -8,13 +8,16 @@ import android.nfc.NdefRecord
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.Ndef
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import com.sadeeq.app.projectprototype.R
 
 class NFCActivity : AppCompatActivity() {
     private var nfcAdapter: NfcAdapter? = null
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nfcactivity)
@@ -69,9 +72,13 @@ class NFCActivity : AppCompatActivity() {
     // Handle NFC intent in onNewIntent method
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
+
         if (NfcAdapter.ACTION_NDEF_DISCOVERED == intent.action) {
-            val rawMessages = intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)
-            // Process the NDEF messages
+            intent.getParcelableArrayExtra(NfcAdapter.EXTRA_NDEF_MESSAGES)?.also { rawMessages ->
+                val messages: List<NdefMessage> = rawMessages.map { it as NdefMessage }
+                // Process the messages array.
+
+            }
         }
     }
 }
